@@ -1,4 +1,4 @@
-package me.thecatisbest.awa.events.mbedwars;
+package me.thecatisbest.awa.addons.MBedwars;
 
 import de.marcely.bedwars.api.BedwarsAPI;
 import de.marcely.bedwars.api.event.player.PlayerIngameRespawnEvent;
