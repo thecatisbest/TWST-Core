@@ -11,7 +11,7 @@ import me.thecatisbest.awa.commands.TabComplete;
 import me.thecatisbest.awa.events.JoinEvents;
 import me.thecatisbest.awa.events.JoinFireworkEvents;
 import me.thecatisbest.awa.events.LeaveEvents;
-import me.thecatisbest.awa.addons.MBedwars.IngameRespawnEvent;
+import me.thecatisbest.awa.events.MBedwars.IngameRespawnEvent;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
