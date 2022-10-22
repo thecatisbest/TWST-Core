@@ -1,0 +1,9 @@
+name: TWST-Core
+version: '${project.version}'
+main: me.thecatisbest.awa.Main
+api-version: 1.13
+depend: [LuckPerms]
+softdepend: [PlaceholderAPI, MBedwars]
+commands:
+  twstcore:
+    description: twst core plugin main command

@@ -1,0 +1,38 @@
+# TWST-Core Configuration
+config-version: 1
+
+Join-Leave:
+  Join-message: "[&a+&r] &6The player &b&l%player% &6has joined the server!"
+  Leave-message: "[&c-&r] &6The player &b&l%player% &6has left the server!"
+  First-Join: "&6The player &6&l%player% &6has joined for the first time!"
+
+Join-firework:
+  instant-explode: false
+  amount: 3
+  firework-height: 3
+  power: 1
+  type: BALL
+  flicker: false
+  trail: false
+  colors:
+    - YELLOW
+  fade:
+    - WHITE
+
+Permission:
+  Help-Command: "twstcore.commands.help"
+  Reload-Command: "twstcore.commands.reload"
+
+Help:
+  Admin:
+    - "&d&m--------&bHelp List&d&m--------"
+    - "&eCommand list:"
+    - "&e/twstcore reload"
+    - ""
+    - "&dAuthor: &bCloudOcean"
+    - "&eMake this plugin using &c❤"
+
+Message:
+  No-Permission: "&cYou do not have permission! &e(%permission%)"
+  Starting-Reload: "&eStarting reload..."
+  Success-Reload: "&aReloaded configuration file!"
