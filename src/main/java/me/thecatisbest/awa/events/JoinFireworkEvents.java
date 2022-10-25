@@ -28,7 +28,7 @@ public class JoinFireworkEvents implements Listener {
         Player player = e.getPlayer();
         Location location = player.getLocation();
 
-        if (player.hasPermission("twstcore.join.firework"))
+        if (player.hasPermission(plugin.config.getString("Permission.Join-Firework")))
             for (int i = 1; i < plugin.config.getInt("Join-firework.amount"); i++) {
                 ArrayList<Color> colors = new ArrayList<>();
                 ArrayList<Color> fade = new ArrayList<>();

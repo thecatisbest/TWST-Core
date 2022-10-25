@@ -20,9 +20,9 @@ public class JoinEvents implements Listener {
         Player player = e.getPlayer();
 
         if (player.hasPlayedBefore()) {
-            e.setJoinMessage(plugin.color(plugin.config.getString("Join-Leave.Join-message").replaceAll("%player%", player.getDisplayName())));
+            e.setJoinMessage(plugin.color(plugin.config.getString("Join-Leave.Join-message").replaceAll("%player%", player.getName()).replaceAll("%player_DisplayName%", player.getDisplayName())));
         } else {
-            e.setJoinMessage(plugin.color(plugin.config.getString("Join-Leave.First-Join").replaceAll("%player%", player.getDisplayName())));
+            e.setJoinMessage(plugin.color(plugin.config.getString("Join-Leave.First-Join").replaceAll("%player%", player.getName()).replaceAll("%player_DisplayName%", player.getDisplayName())));
         }
     }
 }

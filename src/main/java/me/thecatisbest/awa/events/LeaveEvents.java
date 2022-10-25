@@ -18,6 +18,6 @@ public class LeaveEvents implements Listener {
     public void onLeave(PlayerQuitEvent e) {
         Player player = e.getPlayer();
 
-        e.setQuitMessage(plugin.color(plugin.config.getString("Join-Leave.Leave-message").replaceAll("%player%", player.getDisplayName())));
+        e.setQuitMessage(plugin.color(plugin.config.getString("Join-Leave.Leave-message").replaceAll("%player%", player.getName()).replaceAll("%player_DisplayName%", player.getDisplayName())));
     }
 }

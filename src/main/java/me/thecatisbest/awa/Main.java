@@ -10,6 +10,7 @@ import me.thecatisbest.awa.commands.TWSTCommand;
 import me.thecatisbest.awa.commands.TabComplete;
 import me.thecatisbest.awa.events.JoinEvents;
 import me.thecatisbest.awa.events.JoinFireworkEvents;
+import me.thecatisbest.awa.events.JoinMotdEvents;
 import me.thecatisbest.awa.events.LeaveEvents;
 import me.thecatisbest.awa.events.MBedwars.IngameRespawnEvent;
 import org.bukkit.ChatColor;
@@ -50,6 +51,7 @@ public class Main extends JavaPlugin {
     public void registerEvents(){
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new IngameRespawnEvent(), this);
+        pm.registerEvents(new JoinMotdEvents(this), this);
         pm.registerEvents(new JoinFireworkEvents(this), this);
         pm.registerEvents(new JoinEvents(this), this);
         pm.registerEvents(new LeaveEvents(this), this);
