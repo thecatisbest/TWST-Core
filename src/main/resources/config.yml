@@ -5,15 +5,15 @@ config-version: 1
 # %player% , %player_DisplayName%
 
 Join-MOTD:
-  - "&e&m--------------------------------------------------------"
+  - "&e&m-----------------------------------------------------"
   - "&bWelcome to the server &d%player%&b!"
   - "www.yourserver.com"
-  - "&e&m--------------------------------------------------------"
+  - "&e&m-----------------------------------------------------"
 
 Join-Leave:
-  Join-message: "[&a+&r] &6The player &b&l%player% &6has joined the server!"
-  Leave-message: "[&c-&r] &6The player &b&l%player% &6has left the server!"
-  First-Join: "&6The player &6&l%player% &6has joined for the first time!"
+  Join-message: "&7[&a+&7] &b%player% &dhas joined the server!"
+  Leave-message: "&7[&a-&7] &b%player% &dhas left the server!"
+  First-Join: "&dThe player &b%player% &dhas joined for the first time!"
 
 Join-firework:
   instant-explode: false
@@ -43,6 +43,6 @@ Help:
     - "&eMake this plugin using &c❤"
 
 Message:
-  No-Permission: "&cYou do not have permission! &e(%permission%)"
+  No-Permission: "&cYou do not have permission! &e%permission%"
   Starting-Reload: "&eStarting reload..."
   Success-Reload: "&aReloaded configuration file!"
