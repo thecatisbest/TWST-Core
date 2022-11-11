@@ -32,17 +32,4 @@ Permission:
   Help-Command: "twstcore.commands.help"
   Reload-Command: "twstcore.commands.reload"
   Join-Firework: "twstcore.join.firework"
-
-Help:
-  Admin:
-    - "&d&m--------&bHelp List&d&m--------"
-    - "&eCommand list:"
-    - "&e/twstcore reload"
-    - ""
-    - "&dAuthor: &bCloudOcean"
-    - "&eMake this plugin using &c❤"
-
-Message:
-  No-Permission: "&cYou do not have permission! &e%permission%"
-  Starting-Reload: "&eStarting reload..."
-  Success-Reload: "&aReloaded configuration file!"
+  SubCommand-View: "twstcore.subcommand.view"

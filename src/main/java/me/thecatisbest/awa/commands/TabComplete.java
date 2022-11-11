@@ -1,5 +1,6 @@
 package me.thecatisbest.awa.commands;
 
+import me.thecatisbest.awa.Main;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
@@ -10,22 +11,27 @@ import java.util.List;
 
 public class TabComplete implements TabCompleter {
 
-    List<String> arguments = new ArrayList<String>();
+    private final List<String> tabList = new ArrayList<>();
+    private final CommandManager commandManager;
+    private final Main plugin;
+    public TabComplete(Main plugin, CommandManager commandManager){
+        this.plugin = plugin;
+        this.commandManager = commandManager;
+    }
 
-    public List<String> onTabComplete(@NotNull CommandSender sender,@NotNull Command cmd,@NotNull String label, String[] args) {
-        if (arguments.isEmpty()) {
-            arguments.add("reload");
-        }
+    @Override
+    public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, String[] args) {
 
-        List<String> result = new ArrayList<String>();
-        if (args.length == 1) {
-            for (String a : arguments) {
-                if (a.toLowerCase().startsWith(args[0].toLowerCase()))
-                    result.add(a);
+        if (args.length == 1){
+            if (sender.hasPermission(plugin.config.getString("twstcore.subcommand.view"))){
+                for (int i = 0; i < commandManager.getSubCommands().size(); i++){
+                    tabList.add(commandManager.getSubCommands().get(i).getName());
+                }
+                return tabList;
             }
-            return result;
         }
-
         return null;
     }
+
+
 }
