@@ -23,7 +23,7 @@ public class TabComplete implements TabCompleter {
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, String[] args) {
 
         if (args.length == 1){
-            if (sender.hasPermission(plugin.config.getString("twstcore.subcommand.view"))){
+            if (sender.hasPermission(plugin.config.getString("Permission.SubCommand-View"))){
                 for (int i = 0; i < commandManager.getSubCommands().size(); i++){
                     tabList.add(commandManager.getSubCommands().get(i).getName());
                 }
