@@ -7,21 +7,20 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-
-public class JoinEvents implements Listener {
+public class FirstJoinEvents implements Listener {
 
     private final Main plugin;
 
-    public JoinEvents(Main plugin) {
+    public FirstJoinEvents(Main plugin) {
         this.plugin = plugin;
     }
 
     @EventHandler
-    public void onJoin(PlayerJoinEvent e) {
+    public void onFirstJoin (PlayerJoinEvent e){
         Player player = e.getPlayer();
 
-        if (player.hasPlayedBefore()) {
-            e.setJoinMessage(CC.color(plugin.config.getString("Join-Leave.Join-message")
+        if (!player.hasPlayedBefore()){
+            e.setJoinMessage(CC.color(plugin.config.getString("Join-Leave.First-Join")
                     .replaceAll("%player%", player.getName())
                     .replaceAll("%player_DisplayName%", player.getDisplayName())));
         }

@@ -1,14 +1,27 @@
 package me.thecatisbest.awa.utilis;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
 public class CC {
 
+    /**
+     * @param msg The message to format
+     * @return The formatted message
+     */
     public static String color(String msg) {
         return ChatColor.translateAlternateColorCodes('&', msg);
     }
 
-    static public final String WITH_DELIMITER = "((?<=%1$s)|(?=%1$s))";
+    /**
+     * @param message The message to send to the console
+     */
+    public static void consoleMessage(String message){
+        Bukkit.getServer().getConsoleSender().sendMessage(message);
+    }
+}
+
+/*    static public final String WITH_DELIMITER = "((?<=%1$s)|(?=%1$s))";
 
     public static String translateColorCodes(String text){
 
@@ -32,4 +45,4 @@ public class CC {
 
         return finalText.toString();
     }
-}
+ */
