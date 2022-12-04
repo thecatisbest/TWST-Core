@@ -1,6 +1,7 @@
 package me.thecatisbest.awa.events;
 
 import me.thecatisbest.awa.Main;
+import me.thecatisbest.awa.utilis.CC;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -22,6 +23,8 @@ public class JoinMotdEvents implements Listener {
 
         List<String> lore = plugin.config.getStringList("Join-MOTD");
         for(String l : lore)
-            player.sendMessage(plugin.color(l).replaceAll("%player%", player.getName()).replaceAll("%player_DisplayName%", player.getDisplayName()));
+            player.sendMessage(CC.color(l)
+                    .replaceAll("%player%", player.getName())
+                    .replaceAll("%player_DisplayName%", player.getDisplayName()));
     }
 }

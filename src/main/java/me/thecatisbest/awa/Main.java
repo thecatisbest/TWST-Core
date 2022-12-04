@@ -6,14 +6,12 @@ import dev.dejvokep.boostedyaml.settings.dumper.DumperSettings;
 import dev.dejvokep.boostedyaml.settings.general.GeneralSettings;
 import dev.dejvokep.boostedyaml.settings.loader.LoaderSettings;
 import dev.dejvokep.boostedyaml.settings.updater.UpdaterSettings;
-import me.thecatisbest.awa.commands.TWSTCommand;
-import me.thecatisbest.awa.commands.TabComplete;
+import me.thecatisbest.awa.commands.CommandManager;
 import me.thecatisbest.awa.events.JoinEvents;
 import me.thecatisbest.awa.events.JoinFireworkEvents;
 import me.thecatisbest.awa.events.JoinMotdEvents;
 import me.thecatisbest.awa.events.LeaveEvents;
-import me.thecatisbest.awa.events.MBedwars.IngameRespawnEvent;
-import org.bukkit.ChatColor;
+import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -25,17 +23,36 @@ public class Main extends JavaPlugin {
 
     // Config
     public YamlDocument config;
+    // Message
+    public YamlDocument message;
 
     @Override
     public void onEnable() {
         // Plugin startup logic
-        registerCommands();
+        this.getCommand("twstcore").setExecutor(new CommandManager(this));
+        this.getCommand("twstcore").setTabCompleter(new CommandManager(this));
+
         registerEvents();
-        System.out.println("[TWST-Core] plugin successfully loaded!");
+
+        PluginDescriptionFile pdf = this.getDescription();
+        log(
+                "[------------ " + pdf.getName() + " Enabled ------------]",
+                "-----> Description:",
+                "-----> Author: " + pdf.getAuthors(),
+                "-----> Version: " + pdf.getVersion(),
+                "[----------------------------------------]"
+        );
 
         // Create and update the file
         try {
-            config = YamlDocument.create(new File(getDataFolder(), "config.yml"),Objects.requireNonNull(getResource("config.yml")) ,
+            config = YamlDocument.create(new File(getDataFolder(), "config.yml"), Objects.requireNonNull(getResource("config.yml")),
+                    GeneralSettings.DEFAULT, LoaderSettings.builder().setAutoUpdate(true).build(),
+                    DumperSettings.DEFAULT, UpdaterSettings.builder().setVersioning(new BasicVersioning("config-version")).build());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        try {
+            message = YamlDocument.create(new File(getDataFolder(), "message.yml"), Objects.requireNonNull(getResource("message.yml")),
                     GeneralSettings.DEFAULT, LoaderSettings.builder().setAutoUpdate(true).build(),
                     DumperSettings.DEFAULT, UpdaterSettings.builder().setVersioning(new BasicVersioning("config-version")).build());
         } catch (IOException ex) {
@@ -46,21 +63,25 @@ public class Main extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        System.out.println("[TWST-Core] plugin successfully disabled!");
+        PluginDescriptionFile pdf = this.getDescription();
+        log(
+                "[------------ " + pdf.getName() + " Disabled ------------]",
+                "-----> Description:",
+                "-----> Author: " + pdf.getAuthors(),
+                "-----> Version: " + pdf.getVersion(),
+                "[----------------------------------------]"
+        );
     }
-    public void registerEvents(){
+    public void registerEvents() {
         PluginManager pm = getServer().getPluginManager();
-        pm.registerEvents(new IngameRespawnEvent(), this);
+
         pm.registerEvents(new JoinMotdEvents(this), this);
         pm.registerEvents(new JoinFireworkEvents(this), this);
         pm.registerEvents(new JoinEvents(this), this);
         pm.registerEvents(new LeaveEvents(this), this);
     }
-    public void registerCommands(){
-        getCommand("twstcore").setTabCompleter(new TabComplete());
-        getCommand("twstcore").setExecutor(new TWSTCommand(this));
-    }
-    public String color(String msg) {
-        return ChatColor.translateAlternateColorCodes('&', msg);
+    private void log(String... args) {
+        for (String s : args)
+            getLogger().info(s);
     }
 }

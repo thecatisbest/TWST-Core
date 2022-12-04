@@ -1,6 +1,7 @@
 package me.thecatisbest.awa.events;
 
 import me.thecatisbest.awa.Main;
+import me.thecatisbest.awa.utilis.CC;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,6 +19,8 @@ public class LeaveEvents implements Listener {
     public void onLeave(PlayerQuitEvent e) {
         Player player = e.getPlayer();
 
-        e.setQuitMessage(plugin.color(plugin.config.getString("Join-Leave.Leave-message").replaceAll("%player%", player.getName()).replaceAll("%player_DisplayName%", player.getDisplayName())));
+        e.setQuitMessage(CC.color(plugin.config.getString("Join-Leave.Leave-message")
+                .replaceAll("%player%", player.getName())
+                .replaceAll("%player_DisplayName%", player.getDisplayName())));
     }
 }
