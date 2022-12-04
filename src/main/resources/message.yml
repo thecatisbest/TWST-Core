@@ -1,0 +1,7 @@
+# TWST-Core Configuration
+config-version: 1
+
+No-Permission: "&cYou do not have permission! &e%permission%"
+Starting-Reload: "&eStarting reload..."
+Success-Reload: "&aReloaded configuration file!"
+SubCommand-Reload-Description: "Reloads the config file."
