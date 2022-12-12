@@ -49,6 +49,7 @@ public class Reload extends SubCommand {
             try {
                 plugin.config.reload();
                 plugin.message.reload();
+                plugin.module.reload();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

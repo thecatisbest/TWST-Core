@@ -25,6 +25,6 @@ public class JoinMotdEvents implements Listener {
         for(String l : lore)
             player.sendMessage(CC.color(l)
                     .replaceAll("%player%", player.getName())
-                    .replaceAll("%player_DisplayName%", player.getDisplayName()));
+                    .replaceAll("%player_displayName%", player.getDisplayName()));
     }
 }

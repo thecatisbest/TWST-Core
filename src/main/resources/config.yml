@@ -1,19 +1,25 @@
 # TWST-Core Configuration
-config-version: 2
+version: 3
 
 # Placeholder
-# %player% , %player_DisplayName%
+# %player% , %player_displayName%
 
 Join-MOTD:
   - "&e&m-----------------------------------------------------"
   - "&bWelcome to the server &d%player%&b!"
-  - "www.yourserver.com"
+  - "&awww.yourserver.com"
   - "&e&m-----------------------------------------------------"
+First-Join: "&dThe player &b%player% &dhas joined for the first time!"
 
-Join-Leave:
-  Join-message: "&7[&a+&7] &b%player% &dhas joined the server!"
-  Leave-message: "&7[&a-&7] &b%player% &dhas left the server!"
-  First-Join: "&dThe player &b%player% &dhas joined for the first time!"
+Groups:
+  # The id must be unique (You can add infinite groups)
+  group1:
+    Permission: twstcore.group.group1  # Make sure the player has this permission.
+    Join-Message: "&7[&a+&7] &bThe player &a%player% &bhas Join the game! &d[&bGroup1&d]"  # Join Message
+    Leave-Message: "&7[&a-&7] &bThe player &a%player% &bhas Left the game! &d[&bGroup1&d]"    # Leave Message
+    Sound: LEVEL_UP # go to https://helpch.at/docs/ ,select your server version and go to Bukkit.Sound then found it.
+    Commands: # [player] run by the player, [console] run from the console.
+      - "[console] This is Example 1!"
 
 Join-firework:
   instant-explode: false
@@ -29,7 +35,7 @@ Join-firework:
     - WHITE
 
 Permission:
-  Help-Command: "twstcore.commands.help"
-  Reload-Command: "twstcore.commands.reload"
-  Join-Firework: "twstcore.join.firework"
-  SubCommand-View: "twstcore.subcommand.view"
+  Help-Command: twstcore.commands.help
+  Reload-Command: twstcore.commands.reload
+  Join-Firework: twstcore.join.firework
+  SubCommand-View: twstcore.subcommand.view

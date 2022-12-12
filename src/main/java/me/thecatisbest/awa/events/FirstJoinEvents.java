@@ -20,7 +20,7 @@ public class FirstJoinEvents implements Listener {
         Player player = e.getPlayer();
 
         if (!player.hasPlayedBefore()){
-            e.setJoinMessage(CC.color(plugin.config.getString("Join-Leave.First-Join")
+            e.setJoinMessage(CC.color(plugin.config.getString("First-Join")
                     .replaceAll("%player%", player.getName())
                     .replaceAll("%player_DisplayName%", player.getDisplayName())));
         }

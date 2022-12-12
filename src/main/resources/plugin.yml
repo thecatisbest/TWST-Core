@@ -1,4 +1,5 @@
 name: TWST-Core
+author: CloudOcean
 version: '${project.version}'
 main: me.thecatisbest.awa.Main
 api-version: 1.13

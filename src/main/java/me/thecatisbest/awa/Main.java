@@ -7,10 +7,7 @@ import dev.dejvokep.boostedyaml.settings.general.GeneralSettings;
 import dev.dejvokep.boostedyaml.settings.loader.LoaderSettings;
 import dev.dejvokep.boostedyaml.settings.updater.UpdaterSettings;
 import me.thecatisbest.awa.commands.CommandManager;
-import me.thecatisbest.awa.events.JoinEvents;
-import me.thecatisbest.awa.events.JoinFireworkEvents;
-import me.thecatisbest.awa.events.JoinMotdEvents;
-import me.thecatisbest.awa.events.LeaveEvents;
+import me.thecatisbest.awa.events.*;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -25,6 +22,8 @@ public class Main extends JavaPlugin {
     public YamlDocument config;
     // Message
     public YamlDocument message;
+    // Module
+    public YamlDocument module;
 
     @Override
     public void onEnable() {
@@ -47,14 +46,21 @@ public class Main extends JavaPlugin {
         try {
             config = YamlDocument.create(new File(getDataFolder(), "config.yml"), Objects.requireNonNull(getResource("config.yml")),
                     GeneralSettings.DEFAULT, LoaderSettings.builder().setAutoUpdate(true).build(),
-                    DumperSettings.DEFAULT, UpdaterSettings.builder().setVersioning(new BasicVersioning("config-version")).build());
+                    DumperSettings.DEFAULT, UpdaterSettings.builder().setVersioning(new BasicVersioning("version")).build());
         } catch (IOException ex) {
             ex.printStackTrace();
         }
         try {
             message = YamlDocument.create(new File(getDataFolder(), "message.yml"), Objects.requireNonNull(getResource("message.yml")),
                     GeneralSettings.DEFAULT, LoaderSettings.builder().setAutoUpdate(true).build(),
-                    DumperSettings.DEFAULT, UpdaterSettings.builder().setVersioning(new BasicVersioning("config-version")).build());
+                    DumperSettings.DEFAULT, UpdaterSettings.builder().setVersioning(new BasicVersioning("version")).build());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        try {
+            module = YamlDocument.create(new File(getDataFolder(), "module.yml"), Objects.requireNonNull(getResource("module.yml")),
+                    GeneralSettings.DEFAULT, LoaderSettings.builder().setAutoUpdate(true).build(),
+                    DumperSettings.DEFAULT, UpdaterSettings.builder().setVersioning(new BasicVersioning("version")).build());
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -77,8 +83,9 @@ public class Main extends JavaPlugin {
 
         pm.registerEvents(new JoinMotdEvents(this), this);
         pm.registerEvents(new JoinFireworkEvents(this), this);
-        pm.registerEvents(new JoinEvents(this), this);
-        pm.registerEvents(new LeaveEvents(this), this);
+        pm.registerEvents(new FirstJoinEvents(this), this);
+        pm.registerEvents(new JoinEvent(this), this);
+        pm.registerEvents(new LeaveEvent(this), this);
     }
     private void log(String... args) {
         for (String s : args)
