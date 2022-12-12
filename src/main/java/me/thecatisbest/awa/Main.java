@@ -8,6 +8,8 @@ import dev.dejvokep.boostedyaml.settings.loader.LoaderSettings;
 import dev.dejvokep.boostedyaml.settings.updater.UpdaterSettings;
 import me.thecatisbest.awa.commands.CommandManager;
 import me.thecatisbest.awa.events.*;
+import me.thecatisbest.awa.utilis.Utilis;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -28,6 +30,7 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
+
         this.getCommand("twstcore").setExecutor(new CommandManager(this));
         this.getCommand("twstcore").setTabCompleter(new CommandManager(this));
 
@@ -41,6 +44,13 @@ public class Main extends JavaPlugin {
                 "-----> Version: " + pdf.getVersion(),
                 "[----------------------------------------]"
         );
+
+        // Small check to make sure that PlaceholderAPI is installed
+        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            new Placeholders(this).register();
+        } else {
+            Utilis.logMessage(this.getClass(), "PlaceholderAPI was not Found! PAPI placeholders won't work!");
+        }
 
         // Create and update the file
         try {

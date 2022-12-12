@@ -3,8 +3,7 @@ author: CloudOcean
 version: '${project.version}'
 main: me.thecatisbest.awa.Main
 api-version: 1.13
-depend: [LuckPerms]
-softdepend: [PlaceholderAPI, MBedwars]
+softdepend: [PlaceholderAPI]
 commands:
   twstcore:
     description: twst core plugin main command

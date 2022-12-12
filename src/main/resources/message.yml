@@ -1,5 +1,6 @@
 # TWST-Core Message
 version: 1
+version_own: "&b&lBETA &c0.87 &f-> &b&l0.97"
 
 No-Permission: "&cYou do not have permission! &e%permission%"
 Starting-Reload: "&eStarting reload..."
