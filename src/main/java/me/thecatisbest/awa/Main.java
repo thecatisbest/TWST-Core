@@ -26,6 +26,8 @@ public class Main extends JavaPlugin {
     public YamlDocument message;
     // Module
     public YamlDocument module;
+    // Permission
+    public YamlDocument permission;
 
     @Override
     public void onEnable() {
@@ -69,6 +71,13 @@ public class Main extends JavaPlugin {
         }
         try {
             module = YamlDocument.create(new File(getDataFolder(), "module.yml"), Objects.requireNonNull(getResource("module.yml")),
+                    GeneralSettings.DEFAULT, LoaderSettings.builder().setAutoUpdate(true).build(),
+                    DumperSettings.DEFAULT, UpdaterSettings.builder().setVersioning(new BasicVersioning("version")).build());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        try {
+            permission = YamlDocument.create(new File(getDataFolder(), "permission.yml"), Objects.requireNonNull(getResource("permission.yml")),
                     GeneralSettings.DEFAULT, LoaderSettings.builder().setAutoUpdate(true).build(),
                     DumperSettings.DEFAULT, UpdaterSettings.builder().setVersioning(new BasicVersioning("version")).build());
         } catch (IOException ex) {

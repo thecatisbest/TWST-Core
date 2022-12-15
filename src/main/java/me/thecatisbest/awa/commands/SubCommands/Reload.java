@@ -43,20 +43,21 @@ public class Reload extends SubCommand {
 
     @Override
     public void perform(CommandSender sender, String[] args) {
-        if (sender.hasPermission(plugin.config.getString("Permission.Reload-Command"))) {
+        if (sender.hasPermission(plugin.permission.getString("Reload-Command"))) {
             sender.sendMessage(CC.color(plugin.message.getString("Starting-Reload")));
             sender.sendMessage(CC.color(plugin.message.getString("Success-Reload")));
             try {
                 plugin.config.reload();
                 plugin.message.reload();
                 plugin.module.reload();
+                plugin.permission.reload();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         } else {
             sender.sendMessage(CC.color(
                     plugin.message.getString("No-Permission")
-                            .replaceAll(("%permission%"), plugin.config.getString("Permission.Reload-Command"))));
+                            .replaceAll(("%permission%"), plugin.permission.getString("Reload-Command"))));
         }
     }
     @Override

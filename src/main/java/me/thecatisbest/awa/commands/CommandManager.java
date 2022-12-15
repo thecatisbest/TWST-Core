@@ -7,7 +7,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
-import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -27,39 +26,32 @@ public class CommandManager implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
-        if (sender instanceof Player) {
-
-            Player player = (Player) sender;
-            if (player.hasPermission(plugin.config.getString("Permission.Help-Command"))) {
-
-
-                if (args.length > 0) {
-                    for (SubCommand count : subCommands) {
-                        if (args[0].equalsIgnoreCase(count.getName())) {
-                            count.perform(player, args);
-                        }
+        if (sender.hasPermission(plugin.permission.getString("Help-Command"))) {
+            if (args.length > 0) {
+                for (SubCommand count : subCommands) {
+                    if (args[0].equalsIgnoreCase(count.getName())) {
+                        count.perform(sender, args);
                     }
-                } else {
-                    player.sendMessage(" ");
-                    player.sendMessage(CC.color("    &d&m--------&bHelp List&d&m--------"));
-                    player.sendMessage(" ");
-                    for (int i = 0; i < getSubCommands().size(); i++) {
-                        player.sendMessage(CC.color(" &e" + getSubCommands().get(i).getSyntax() + " &b" + getSubCommands().get(i).getDescription()));
-                    }
-                    player.sendMessage(" ");
-                    player.sendMessage(CC.color(" &dAuthor: &bCloudOcean"));
-                    player.sendMessage(" ");
-                    player.sendMessage(CC.color("    &d&m--------------------&f"));
-                    player.sendMessage(" ");
-                    return true;
                 }
-                return true;
             } else {
-                player.sendMessage(CC.color("&d&lTWST-Core &f&oBy CloudOcean"));
+                sender.sendMessage(" ");
+                sender.sendMessage(CC.color("    &d&m--------&bHelp List&d&m--------"));
+                sender.sendMessage(" ");
+                for (int i = 0; i < getSubCommands().size(); i++) {
+                    sender.sendMessage(CC.color(" &e" + getSubCommands().get(i).getSyntax() + " &b" + getSubCommands().get(i).getDescription()));
+                }
+                sender.sendMessage(" ");
+                sender.sendMessage(CC.color(" &dAuthor: &b" + plugin.getDescription().getAuthors()));
+                sender.sendMessage(" ");
+                sender.sendMessage(CC.color("    &d&m--------------------&f"));
+                sender.sendMessage(" ");
                 return true;
             }
+            return true;
+        } else {
+            sender.sendMessage(CC.color("&d&lTWST-Core &f&oBy CloudOcean"));
+            return true;
         }
-        return true;
     }
 
     @Override
@@ -67,7 +59,7 @@ public class CommandManager implements CommandExecutor, TabCompleter {
 
         if (args.length == 1) {
             List<String> tabList = new ArrayList<>();
-            if (sender.hasPermission(plugin.config.getString("Permission.SubCommand-View"))) {
+            if (sender.hasPermission(plugin.permission.getString("SubCommand-View"))) {
                 for (int i = 0; i < getSubCommands().size(); i++) {
                     tabList.add(getSubCommands().get(i).getName());
                 }

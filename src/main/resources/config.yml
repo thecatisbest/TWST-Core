@@ -1,5 +1,5 @@
 # TWST-Core Configuration
-version: 3
+version: 1
 
 # Placeholder
 # %twstcore_version-own%
@@ -10,10 +10,10 @@ Join-MOTD:
   - "&bWelcome to the server &d%player%&b!"
   - "&awww.yourserver.com"
   - "&e&m-----------------------------------------------------"
+
 First-Join: "&dThe player &b%player% &dhas joined for the first time!"
 
 Groups:
-  # The id must be unique (You can add infinite groups)
   group1:
     Permission: twstcore.group.group1  # Make sure the player has this permission.
     Join-Message: "&7[&a+&7] &bThe player &a%player% &bhas Join the game! &d[&bGroup1&d]"  # Join Message
@@ -21,6 +21,9 @@ Groups:
     Sound: BLOCK_NOTE_BLOCK_CHIME # go to https://helpch.at/docs/ ,select your server version and go to Bukkit.Sound then found it.
     Commands: # [player] run by the player, [console] run from the console.
       - "[console] This is Example 1!"
+
+# Color List
+# AQUA, BLACK, BLUE, FUCHSIA, GRAY, GREEN, LIME, MAROON, NAVY, OLIVE, ORANGE, PURPLE, RED, SILVER, TEAL, WHITE, YELLOW
 
 Join-firework:
   instant-explode: false
@@ -34,9 +37,3 @@ Join-firework:
     - YELLOW
   fade:
     - WHITE
-
-Permission:
-  Help-Command: twstcore.commands.help
-  Reload-Command: twstcore.commands.reload
-  Join-Firework: twstcore.join.firework
-  SubCommand-View: twstcore.subcommand.view
