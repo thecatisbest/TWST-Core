@@ -5,22 +5,35 @@ version: 1
 # %twstcore_version-own%
 # %player% , %player_displayName%
 
+############### JOIN-MOTD ###############
+
 Join-MOTD:
   - "&e&m-----------------------------------------------------"
   - "&bWelcome to the server &d%player%&b!"
   - "&awww.yourserver.com"
   - "&e&m-----------------------------------------------------"
 
+############### JOIN_LEAVE ###############
+
 First-Join: "&dThe player &b%player% &dhas joined for the first time!"
 
 Groups:
-  group1:
-    Permission: twstcore.group.group1  # Make sure the player has this permission.
-    Join-Message: "&7[&a+&7] &bThe player &a%player% &bhas Join the game! &d[&bGroup1&d]"  # Join Message
-    Leave-Message: "&7[&a-&7] &bThe player &a%player% &bhas Left the game! &d[&bGroup1&d]"    # Leave Message
-    Sound: BLOCK_NOTE_BLOCK_CHIME # go to https://helpch.at/docs/ ,select your server version and go to Bukkit.Sound then found it.
+  default:
+    Permission: twstcore.group.default  # Make sure the player has this permission.
+    Join-Message: "&7[&a+&7] &bThe player &a%player% &bhas Join the game! &d[&bDefault&d]"  # Join Message
+    Leave-Message: "&7[&a-&7] &bThe player &a%player% &bhas Left the game! &d[&bDefault&d]"    # Leave Message
+    Sound: ENTITY_PLAYER_LEVELUP # go to https://helpch.at/docs/ ,select your server version and go to Bukkit.Sound then found it.
     Commands: # [player] run by the player, [console] run from the console.
-      - "[console] This is Example 1!"
+      - "[console] Welcome %player% to the server!"
+  group1:
+    Permission: twstcore.group.group1
+    Join-Message: "&7[&a+&7] &bThe player &a%player% &bhas Join the game! &d[&bGroup1&d]"
+    Leave-Message: "&7[&a-&7] &bThe player &a%player% &bhas Left the game! &d[&bGroup1&d]"
+    Sound: BLOCK_NOTE_BLOCK_CHIME
+    Commands: 
+      - "[console] Welcome Group1 %player% to the server!"
+
+############### FIREWORK ###############
 
 # Color List
 # AQUA, BLACK, BLUE, FUCHSIA, GRAY, GREEN, LIME, MAROON, NAVY, OLIVE, ORANGE, PURPLE, RED, SILVER, TEAL, WHITE, YELLOW

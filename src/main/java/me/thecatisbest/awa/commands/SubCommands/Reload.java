@@ -28,7 +28,12 @@ public class Reload extends SubCommand {
 
     @Override
     public String getSyntax() {
-        return "/twstcore reload";
+        return "/twstcore";
+    }
+
+    @Override
+    public String getSyntaxList() {
+        return "reload";
     }
 
     @Override

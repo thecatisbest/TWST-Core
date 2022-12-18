@@ -35,21 +35,21 @@ public class CommandManager implements CommandExecutor, TabCompleter {
                 }
             } else {
                 sender.sendMessage(" ");
-                sender.sendMessage(CC.color("    &d&m--------&bHelp List&d&m--------"));
+                sender.sendMessage(CC.color(" &bTWST-Core &7- &bHelp Menu"));
                 sender.sendMessage(" ");
                 for (int i = 0; i < getSubCommands().size(); i++) {
-                    sender.sendMessage(CC.color(" &e" + getSubCommands().get(i).getSyntax() + " &b" + getSubCommands().get(i).getDescription()));
+                    sender.sendMessage(CC.color(" &e" + getSubCommands().get(i).getSyntax()
+                            + " &f" + getSubCommands().get(i).getSyntaxList()
+                            + " &d" + getSubCommands().get(i).getDescription()));
                 }
                 sender.sendMessage(" ");
                 sender.sendMessage(CC.color(" &dAuthor: &b" + plugin.getDescription().getAuthors()));
-                sender.sendMessage(" ");
-                sender.sendMessage(CC.color("    &d&m--------------------&f"));
                 sender.sendMessage(" ");
                 return true;
             }
             return true;
         } else {
-            sender.sendMessage(CC.color("&d&lTWST-Core &f&oBy CloudOcean"));
+            sender.sendMessage(CC.color("&d&lTWST-Core &f&oBy " + plugin.getDescription().getAuthors()));
             return true;
         }
     }
