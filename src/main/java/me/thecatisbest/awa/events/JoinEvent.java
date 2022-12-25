@@ -38,7 +38,7 @@ public class JoinEvent implements Listener {
             for (Player allPlayers : Bukkit.getOnlinePlayers()) {
                 try {
                     if (!idSection.getString("Sound").equalsIgnoreCase("")){
-                        XSound.play(allPlayers, idSection.getString("Sound") + ", 1, 0");
+                        XSound.play(allPlayers, idSection.getString("Sound") + ", 1, 1");
                     }
                 } catch (IllegalArgumentException e1){
                     Utilis.logMessage(this.getClass(), "The sound " + idSection.getString("Sound") + " doesn't exist in your server version!");
