@@ -1,11 +1,11 @@
 package me.thecatisbest.awa.events;
 
+import com.cryptomorin.xseries.XSound;
 import dev.dejvokep.boostedyaml.block.implementation.Section;
 import me.thecatisbest.awa.Main;
 import me.thecatisbest.awa.utilis.CC;
 import me.thecatisbest.awa.utilis.Utilis;
 import org.bukkit.Bukkit;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -38,7 +38,7 @@ public class JoinEvent implements Listener {
             for (Player allPlayers : Bukkit.getOnlinePlayers()) {
                 try {
                     if (!idSection.getString("Sound").equalsIgnoreCase("")){
-                        allPlayers.playSound(player.getLocation(), Sound.valueOf(idSection.getString("Sound")), 1, 1);
+                        XSound.play(allPlayers, idSection.getString("Sound") + ", 1, 0");
                     }
                 } catch (IllegalArgumentException e1){
                     Utilis.logMessage(this.getClass(), "The sound " + idSection.getString("Sound") + " doesn't exist in your server version!");
