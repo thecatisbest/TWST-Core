@@ -1,5 +1,5 @@
 # TWST-Core Configuration
-version: 1
+version: 2
 
 # Placeholder
 # %twstcore_version-own%
@@ -22,14 +22,14 @@ Groups:
     Permission: twstcore.group.default  # Make sure the player has this permission.
     Join-Message: "&7[&a+&7] &bThe player &a%player% &bhas Join the game! &d[&bDefault&d]"  # Join Message
     Leave-Message: "&7[&a-&7] &bThe player &a%player% &bhas Left the game! &d[&bDefault&d]"    # Leave Message
-    Sound: ENTITY_PLAYER_LEVELUP # go to https://helpch.at/docs/ ,select your server version and go to Bukkit.Sound then found it.
+    Sound: ENTITY_PLAYER_LEVELUP # All the sound list at https://helpch.at/docs/
     Commands: # [player] run by the player, [console] run from the console.
       - "[console] Welcome %player% to the server!"
   group1:
     Permission: twstcore.group.group1
     Join-Message: "&7[&a+&7] &bThe player &a%player% &bhas Join the game! &d[&bGroup1&d]"
     Leave-Message: "&7[&a-&7] &bThe player &a%player% &bhas Left the game! &d[&bGroup1&d]"
-    Sound: BLOCK_NOTE_BLOCK_CHIME
+    Sound: ENTITY_PLAYER_LEVELUP
     Commands: 
       - "[console] Welcome Group1 %player% to the server!"
 

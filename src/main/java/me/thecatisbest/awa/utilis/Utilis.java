@@ -1,5 +1,6 @@
 package me.thecatisbest.awa.utilis;
 
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -25,7 +26,6 @@ public class Utilis {
         }
     }
 
-
     /**
      * Send a message to all online players.
      *
@@ -38,6 +38,19 @@ public class Utilis {
         }
     }
 
+    /**
+     * Send a placeholder on message.
+     *
+     * @param player The player that the command will be executed from.
+     * @param s The message to send to players
+     *
+     */
+    public static String addPlaceholdersMessage(Player player, String s) {
+        if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")){
+            s = PlaceholderAPI.setPlaceholders(player, s);
+        }
+        return CC.color(s);
+    }
     /**
      * Log message, send to console.
      *

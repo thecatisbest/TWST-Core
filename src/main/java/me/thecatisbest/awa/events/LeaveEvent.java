@@ -3,6 +3,7 @@ package me.thecatisbest.awa.events;
 import dev.dejvokep.boostedyaml.block.implementation.Section;
 import me.thecatisbest.awa.Main;
 import me.thecatisbest.awa.utilis.CC;
+import me.thecatisbest.awa.utilis.Utilis;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -36,7 +37,9 @@ public class LeaveEvent implements Listener {
     }
 
     private void setCustomLeaveMessage(PlayerQuitEvent e, Player player, Section idSection) {
-        e.setQuitMessage(CC.color(String.valueOf(idSection.getString("Leave-Message")))
+        String leaveMessage = Utilis.addPlaceholdersMessage(player,
+                String.valueOf(idSection.getString("Leave-Message")));
+        e.setQuitMessage(CC.color(leaveMessage)
                         .replace("%player%", player.getName()
                         .replace("%player_displayName%", player.getDisplayName())));
     }
