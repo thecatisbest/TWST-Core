@@ -1,9 +1,10 @@
 name: TWST-Core
-author: CloudOcean
+author: thecatisbest
 version: '${project.version}'
 main: me.thecatisbest.awa.Main
 api-version: 1.13
 softdepend: [PlaceholderAPI]
 commands:
   twstcore:
+    aliases: [twst]
     description: twst core plugin main command

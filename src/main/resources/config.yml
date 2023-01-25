@@ -5,6 +5,15 @@ version: 1
 # %twstcore_version-own%
 # %player% , %player_displayName%
 
+############### SERVER-MOTD ###############
+
+# The maximum number of players that can play on the server.
+Server-Max-Players: 20
+
+Server-MOTD:
+  Line-1: '&6--------- &bServer Name &7| &eServer MOTD &6---------'
+  Line-2: '              &eSupport &dPlaceholderAPI&e!'
+
 ############### JOIN-MOTD ###############
 
 Join-MOTD:

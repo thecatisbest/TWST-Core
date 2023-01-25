@@ -2,6 +2,7 @@ package me.thecatisbest.awa.events;
 
 import me.thecatisbest.awa.Main;
 import me.thecatisbest.awa.utilis.CC;
+import me.thecatisbest.awa.utilis.Utilis;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,9 +21,11 @@ public class FirstJoinEvents implements Listener {
         Player player = e.getPlayer();
 
         if (!player.hasPlayedBefore()){
-            e.setJoinMessage(CC.color(plugin.config.getString("First-Join")
+            String leaveMessage = Utilis.addPlaceholdersMessage(player,
+                    String.valueOf(plugin.config.getString("First-Join")));
+            e.setJoinMessage(CC.color(leaveMessage)
                     .replaceAll("%player%", player.getName())
-                    .replaceAll("%player_DisplayName%", player.getDisplayName())));
+                    .replaceAll("%player_DisplayName%", player.getDisplayName()));
         }
     }
 }

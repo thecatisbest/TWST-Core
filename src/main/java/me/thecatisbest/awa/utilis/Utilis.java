@@ -39,6 +39,13 @@ public class Utilis {
     }
 
     /**
+     * @param message The message to send to the console
+     */
+    public static void consoleMessage(String message){
+        Bukkit.getServer().getConsoleSender().sendMessage(message);
+    }
+
+    /**
      * Send a placeholder on message.
      *
      * @param player The player that the command will be executed from.

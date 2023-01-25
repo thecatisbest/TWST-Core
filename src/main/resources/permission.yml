@@ -1,7 +1,10 @@
 # TWST-Core Permissions
 version: 1
 
+SubCommand-View: twstcore.subcommand.view
 Help-Command: twstcore.commands.help
 Reload-Command: twstcore.commands.reload
+Info-Command: twstcore.commands.info
+ViewServerMOTD-Command: twstcore.commands.viewservermotd
+
 Join-Firework: twstcore.join.firework
-SubCommand-View: twstcore.subcommand.view

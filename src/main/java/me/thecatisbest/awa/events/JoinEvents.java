@@ -10,11 +10,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-public class JoinEvent implements Listener {
+public class JoinEvents implements Listener {
 
     private final Main plugin;
 
-    public JoinEvent(Main plugin) {
+    public JoinEvents(Main plugin) {
         this.plugin = plugin;
     }
 

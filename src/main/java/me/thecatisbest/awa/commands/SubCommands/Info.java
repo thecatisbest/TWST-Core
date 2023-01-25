@@ -5,25 +5,24 @@ import me.thecatisbest.awa.commands.SubCommand;
 import me.thecatisbest.awa.utilis.CC;
 import org.bukkit.command.CommandSender;
 
-import java.io.IOException;
 import java.util.List;
 
-public class Reload extends SubCommand {
+public class Info extends SubCommand {
 
     private final Main plugin;
 
-    public Reload(Main plugin) {
+    public Info(Main plugin) {
         this.plugin = plugin;
     }
 
     @Override
     public String getName() {
-        return "reload";
+        return "info";
     }
 
     @Override
     public String getDescription() {
-        return plugin.message.getString("SubCommand-Reload-Description");
+        return plugin.message.getString("SubCommand-Info-Description");
     }
 
     @Override
@@ -33,7 +32,7 @@ public class Reload extends SubCommand {
 
     @Override
     public String getSyntaxList() {
-        return "reload";
+        return "info";
     }
 
     @Override
@@ -48,20 +47,16 @@ public class Reload extends SubCommand {
 
     @Override
     public void perform(CommandSender sender, String[] args) {
-        if (sender.hasPermission(plugin.permission.getString("Reload-Command"))) {
-            sender.sendMessage(CC.color(plugin.message.getString("Success-Reload")));
-            try {
-                plugin.config.reload();
-                plugin.message.reload();
-                plugin.module.reload();
-                plugin.permission.reload();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        if (sender.hasPermission(plugin.permission.getString("Info-Command"))) {
+            List<String> lore = plugin.message.getStringList("Info-Message");
+            for (String l : lore)
+                sender.sendMessage(CC.color(l)
+                        .replace("%author%", plugin.getDescription().getAuthors().toString())
+                        .replace("%version%", plugin.getDescription().getVersion()));
         } else {
             sender.sendMessage(CC.color(
                     plugin.message.getString("No-Permission")
-                            .replaceAll(("%permission%"), plugin.permission.getString("Reload-Command"))));
+                            .replaceAll(("%permission%"), plugin.permission.getString("Info-Command"))));
         }
     }
     @Override

@@ -13,36 +13,34 @@ public class CC {
         return ChatColor.translateAlternateColorCodes('&', msg);
     }
 
+
     /**
-     * @param message The message to send to the console
+     * @param string The server motd to format
+     * @return The formatted message
      */
-    public static void consoleMessage(String message){
-        Bukkit.getServer().getConsoleSender().sendMessage(message);
+    public static String serverMOTDColorFormat(String string) {
+        string = string.replace("&0", "\u00a70");
+        string = string.replace("&1", "\u00a71");
+        string = string.replace("&2", "\u00a72");
+        string = string.replace("&3", "\u00a73");
+        string = string.replace("&4", "\u00a74");
+        string = string.replace("&5", "\u00a75");
+        string = string.replace("&6", "\u00a76");
+        string = string.replace("&7", "\u00a77");
+        string = string.replace("&8", "\u00a78");
+        string = string.replace("&9", "\u00a79");
+        string = string.replace("&a", "\u00a7a");
+        string = string.replace("&b", "\u00a7b");
+        string = string.replace("&c", "\u00a7c");
+        string = string.replace("&d", "\u00a7d");
+        string = string.replace("&e", "\u00a7e");
+        string = string.replace("&f", "\u00a7f");
+        string = string.replace("&k", "\u00a7k");
+        string = string.replace("&l", "\u00a7l");
+        string = string.replace("&m", "\u00a7m");
+        string = string.replace("&n", "\u00a7n");
+        string = string.replace("&o", "\u00a7o");
+        string = string.replace("&r", "\u00a7r");
+        return string;
     }
 }
-
-/*    static public final String WITH_DELIMITER = "((?<=%1$s)|(?=%1$s))";
-
-    public static String translateColorCodes(String text){
-
-        String[] texts = text.split(String.format(WITH_DELIMITER, "&"));
-
-        StringBuilder finalText = new StringBuilder();
-
-        for (int i = 0; i < texts.length; i++){
-            if (texts[i].equalsIgnoreCase("&")){
-                //get the next string
-                i++;
-                if (texts[i].charAt(0) == '#'){
-                    finalText.append(net.md_5.bungee.api.ChatColor.of(texts[i].substring(0, 7)) + texts[i].substring(7));
-                }else{
-                    finalText.append(ChatColor.translateAlternateColorCodes('&', "&" + texts[i]));
-                }
-            }else{
-                finalText.append(texts[i]);
-            }
-        }
-
-        return finalText.toString();
-    }
- */

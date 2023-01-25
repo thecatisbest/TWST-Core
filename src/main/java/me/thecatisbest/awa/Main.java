@@ -6,8 +6,10 @@ import dev.dejvokep.boostedyaml.settings.dumper.DumperSettings;
 import dev.dejvokep.boostedyaml.settings.general.GeneralSettings;
 import dev.dejvokep.boostedyaml.settings.loader.LoaderSettings;
 import dev.dejvokep.boostedyaml.settings.updater.UpdaterSettings;
+import lombok.Getter;
 import me.thecatisbest.awa.commands.CommandManager;
 import me.thecatisbest.awa.events.*;
+import me.thecatisbest.awa.events.motd.ServerListPingEvents;
 import me.thecatisbest.awa.utilis.Utilis;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -20,6 +22,8 @@ import java.util.Objects;
 
 public class Main extends JavaPlugin {
 
+    // Instance
+    @Getter private static Main instance;
     // Config
     public YamlDocument config;
     // Message
@@ -32,6 +36,7 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
+        instance = this;
 
         this.getCommand("twstcore").setExecutor(new CommandManager(this));
         this.getCommand("twstcore").setTabCompleter(new CommandManager(this));
@@ -48,7 +53,7 @@ public class Main extends JavaPlugin {
         );
 
         // Small check to make sure that PlaceholderAPI is installed
-        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new Placeholders(this).register();
         } else {
             Utilis.logMessage(this.getClass(), "PlaceholderAPI was not Found! PAPI placeholders won't work!");
@@ -56,6 +61,7 @@ public class Main extends JavaPlugin {
 
         // Create and update the file
         try {
+            // config = YamlDocument.create(folder = new File(getDataFolder().getPath() + "/server icon/"));
             config = YamlDocument.create(new File(getDataFolder(), "config.yml"), Objects.requireNonNull(getResource("config.yml")),
                     GeneralSettings.DEFAULT, LoaderSettings.builder().setAutoUpdate(true).build(),
                     DumperSettings.DEFAULT, UpdaterSettings.builder().setVersioning(new BasicVersioning("version")).build());
@@ -97,15 +103,18 @@ public class Main extends JavaPlugin {
                 "[----------------------------------------]"
         );
     }
+
     public void registerEvents() {
         PluginManager pm = getServer().getPluginManager();
 
+        pm.registerEvents(new ServerListPingEvents(this), this);
         pm.registerEvents(new JoinMotdEvents(this), this);
         pm.registerEvents(new JoinFireworkEvents(this), this);
         pm.registerEvents(new FirstJoinEvents(this), this);
-        pm.registerEvents(new JoinEvent(this), this);
-        pm.registerEvents(new LeaveEvent(this), this);
+        pm.registerEvents(new JoinEvents(this), this);
+        pm.registerEvents(new LeaveEvents(this), this);
     }
+
     private void log(String... args) {
         for (String s : args)
             getLogger().info(s);

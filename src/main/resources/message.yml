@@ -2,7 +2,27 @@
 version: 1
 version_own: "&b&lBETA &c0.87 &f-> &b&l0.97"
 
-No-Permission: "&cYou do not have permission! &e%permission%"
-Starting-Reload: "&eStarting reload..."
-Success-Reload: "&aReloaded configuration file!"
+SubCommand-Info-Description: "Check the plugin info."
 SubCommand-Reload-Description: "Reloads the config file."
+SubCommand-ViewServerMOTD-Description: "View the server motd."
+
+# Placeholder: %author%, %version%
+Info-Message:
+  - "&b&l| &bMade by: &f%author%"
+  - "&b&l| &bSource code: &fhttps://github.com/thecatisbest/TWST-Core"
+  - "&b&l| &bVersion: &f%version%"
+  - ""
+  - "&dThank you for using my plugin, I hope you enjoy this plugin!"
+
+# Placeholder: %max-players%, %line-1%, %line-2%
+ViewServerMOTD-Message:
+  - "&6<< &b&nIngame MOTD &6>>"
+  - ""
+  - "&eServer Max Players &6>> &a%max-players%"
+  - ""
+  - "&eServer MOTD Line 1 &6>> %line-1%"
+  - "&eServer MOTD Line 2 &6>> %line-2%"
+
+Console-Cannot-Execute: "&cConsole can't execute this command!"
+No-Permission: "&cYou do not have permission! &e%permission%"
+Success-Reload: "&aSuccessful reload configuration file!"

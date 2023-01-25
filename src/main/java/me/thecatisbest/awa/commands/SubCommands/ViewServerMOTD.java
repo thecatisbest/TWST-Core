@@ -5,25 +5,24 @@ import me.thecatisbest.awa.commands.SubCommand;
 import me.thecatisbest.awa.utilis.CC;
 import org.bukkit.command.CommandSender;
 
-import java.io.IOException;
 import java.util.List;
 
-public class Reload extends SubCommand {
+public class ViewServerMOTD extends SubCommand {
 
     private final Main plugin;
 
-    public Reload(Main plugin) {
+    public ViewServerMOTD(Main plugin) {
         this.plugin = plugin;
     }
 
     @Override
     public String getName() {
-        return "reload";
+        return "servermotd";
     }
 
     @Override
     public String getDescription() {
-        return plugin.message.getString("SubCommand-Reload-Description");
+        return plugin.message.getString("SubCommand-ViewServerMOTD-Description");
     }
 
     @Override
@@ -33,7 +32,7 @@ public class Reload extends SubCommand {
 
     @Override
     public String getSyntaxList() {
-        return "reload";
+        return "servermotd";
     }
 
     @Override
@@ -48,20 +47,17 @@ public class Reload extends SubCommand {
 
     @Override
     public void perform(CommandSender sender, String[] args) {
-        if (sender.hasPermission(plugin.permission.getString("Reload-Command"))) {
-            sender.sendMessage(CC.color(plugin.message.getString("Success-Reload")));
-            try {
-                plugin.config.reload();
-                plugin.message.reload();
-                plugin.module.reload();
-                plugin.permission.reload();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        if (sender.hasPermission(plugin.permission.getString("ViewServerMOTD-Command"))) {
+            List<String> lore = plugin.message.getStringList("ViewServerMOTD-Message");
+            for (String l : lore)
+                sender.sendMessage(CC.color(l)
+                        .replace("%max-players%", String.valueOf(plugin.config.getInt("Server-Max-Players")))
+                        .replace("%line-1%", plugin.config.getString("Server-MOTD.Line-1"))
+                        .replace("%line-2%", plugin.config.getString("Server-MOTD.Line-2")));
         } else {
             sender.sendMessage(CC.color(
                     plugin.message.getString("No-Permission")
-                            .replaceAll(("%permission%"), plugin.permission.getString("Reload-Command"))));
+                            .replaceAll(("%permission%"), plugin.permission.getString("ViewServerMOTD-Command"))));
         }
     }
     @Override
@@ -69,4 +65,3 @@ public class Reload extends SubCommand {
         return null;
     }
 }
-
