@@ -31,16 +31,6 @@ public class ViewServerMOTD extends SubCommand {
     }
 
     @Override
-    public String getSyntaxList() {
-        return "servermotd";
-    }
-
-    @Override
-    public int maxArguments(){
-        return 1;
-    }
-
-    @Override
     public boolean canConsoleExecute(){
         return true;
     }
@@ -50,7 +40,7 @@ public class ViewServerMOTD extends SubCommand {
         if (sender.hasPermission(plugin.permission.getString("ViewServerMOTD-Command"))) {
             List<String> lore = plugin.message.getStringList("ViewServerMOTD-Message");
             for (String l : lore)
-                sender.sendMessage(CC.color(l)
+                sender.sendMessage(CC.serverMOTDColorFormat(l)
                         .replace("%max-players%", String.valueOf(plugin.config.getInt("Server-Max-Players")))
                         .replace("%line-1%", plugin.config.getString("Server-MOTD.Line-1"))
                         .replace("%line-2%", plugin.config.getString("Server-MOTD.Line-2")));
@@ -59,9 +49,5 @@ public class ViewServerMOTD extends SubCommand {
                     plugin.message.getString("No-Permission")
                             .replaceAll(("%permission%"), plugin.permission.getString("ViewServerMOTD-Command"))));
         }
-    }
-    @Override
-    public List<String> getSubcommandArguments(CommandSender sender, String[] args) {
-        return null;
     }
 }

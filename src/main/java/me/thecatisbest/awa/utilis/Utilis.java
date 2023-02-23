@@ -29,12 +29,12 @@ public class Utilis {
     /**
      * Send a message to all online players.
      *
-     * @param s The message to send to all players.
+     * @param message The message to send to all players.
      *          Doesn't support placeholders atm.
      */
-    public static void sendMessageToAllPlayers(String s) {
+    public static void sendMessageToAllPlayers(String message) {
         for (Player allPlayers : Bukkit.getOnlinePlayers()) {
-            allPlayers.sendMessage(CC.color(s));
+            allPlayers.sendMessage(message);
         }
     }
 

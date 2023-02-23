@@ -5,7 +5,7 @@ import me.thecatisbest.awa.commands.SubCommands.Info;
 import me.thecatisbest.awa.commands.SubCommands.Reload;
 import me.thecatisbest.awa.commands.SubCommands.ViewServerMOTD;
 import me.thecatisbest.awa.utilis.CC;
-import org.bukkit.Bukkit;
+import me.thecatisbest.awa.utilis.Utilis;
 import org.bukkit.command.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -35,7 +35,7 @@ public class CommandManager implements CommandExecutor, TabCompleter {
 
                     if (args[0].equalsIgnoreCase(subCommand.getName())) {
                         if (!subCommand.canConsoleExecute() && sender instanceof ConsoleCommandSender) {
-                            Bukkit.getConsoleSender().sendMessage(CC.color(plugin.message.getString("Console-Cannot-Execute")));
+                            Utilis.consoleMessage(CC.color(plugin.message.getString("Console-Cannot-Execute")));
                             return true;
                         }
                     }
@@ -50,8 +50,8 @@ public class CommandManager implements CommandExecutor, TabCompleter {
                 sender.sendMessage(CC.color(" &bTWST-Core &7- &bHelp Menu"));
                 sender.sendMessage(" ");
                 for (int i = 0; i < getSubCommands().size(); i++) {
-                    sender.sendMessage(CC.color(" &e" + getSubCommands().get(i).getSyntax()
-                            + " &f" + getSubCommands().get(i).getSyntaxList()
+                    sender.sendMessage(CC.color(" &b" + getSubCommands().get(i).getSyntax()
+                            + " &f" + getSubCommands().get(i).getName()
                             + " &b- &d" + getSubCommands().get(i).getDescription()));
                 }
                 sender.sendMessage(" ");
@@ -61,7 +61,7 @@ public class CommandManager implements CommandExecutor, TabCompleter {
             }
             return true;
         } else {
-            sender.sendMessage(CC.color("&bTWST-Core &fBy " + plugin.getDescription().getAuthors()));
+            sender.sendMessage(CC.color("&bTWST-Core &fBy &d" + plugin.getDescription().getAuthors()));
             return true;
         }
     }
@@ -76,12 +76,6 @@ public class CommandManager implements CommandExecutor, TabCompleter {
                     tabList.add(getSubCommands().get(i).getName());
                 }
                 return tabList;
-            } else if (args.length == 2){
-                for (int i = 0; i < getSubCommands().size(); i++){
-                    if (args[0].equalsIgnoreCase(getSubCommands().get(i).getName())) {
-                        return getSubCommands().get(i).getSubcommandArguments(sender, args);
-                    }
-                }
             }
         }
         return null;
@@ -89,5 +83,13 @@ public class CommandManager implements CommandExecutor, TabCompleter {
 
     public List<SubCommand> getSubCommands() {
         return subCommands;
+    }
+
+    public void registerCommands() {
+        for (SubCommand count : subCommands) {
+            for (String lore : count.getAliases()) {
+                plugin.getCommand(lore).setExecutor(this);
+            }
+        }
     }
 }

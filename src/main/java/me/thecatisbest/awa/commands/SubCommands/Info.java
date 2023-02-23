@@ -31,16 +31,6 @@ public class Info extends SubCommand {
     }
 
     @Override
-    public String getSyntaxList() {
-        return "info";
-    }
-
-    @Override
-    public int maxArguments(){
-        return 1;
-    }
-
-    @Override
     public boolean canConsoleExecute(){
         return true;
     }
@@ -58,10 +48,6 @@ public class Info extends SubCommand {
                     plugin.message.getString("No-Permission")
                             .replaceAll(("%permission%"), plugin.permission.getString("Info-Command"))));
         }
-    }
-    @Override
-    public List<String> getSubcommandArguments(CommandSender sender, String[] args) {
-        return null;
     }
 }
 
