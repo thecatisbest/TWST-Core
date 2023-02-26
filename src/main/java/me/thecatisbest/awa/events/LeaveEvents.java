@@ -38,7 +38,7 @@ public class LeaveEvents implements Listener {
 
     private void setCustomLeaveMessage(PlayerQuitEvent e, Player player, Section idSection) {
         String leaveMessage = Utilis.addPlaceholdersMessage(player,
-                String.valueOf(idSection.getString("Leave-Message")));
+                idSection.getString("Leave-Message"));
         e.setQuitMessage(CC.color(leaveMessage)
                         .replace("%player%", player.getName()
                         .replace("%player_displayName%", player.getDisplayName())));

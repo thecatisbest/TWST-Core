@@ -41,7 +41,7 @@ public class JoinEvents implements Listener {
 
     private void setCustomJoinMessage(PlayerJoinEvent e, Player player, Section idSection) {
         String joinMessage = Utilis.addPlaceholdersMessage(player,
-                String.valueOf(idSection.getString("Join-Message")));
+                idSection.getString("Join-Message"));
         e.setJoinMessage(CC.color(joinMessage)
                 .replace("%player%", player.getName()
                         .replace("%player_displayName%", player.getDisplayName())));

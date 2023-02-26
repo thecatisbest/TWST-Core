@@ -22,7 +22,7 @@ public class FirstJoinEvents implements Listener {
 
         if (!player.hasPlayedBefore()){
             String leaveMessage = Utilis.addPlaceholdersMessage(player,
-                    String.valueOf(plugin.config.getString("First-Join")));
+                    plugin.config.getString("First-Join"));
             e.setJoinMessage(CC.color(leaveMessage)
                     .replaceAll("%player%", player.getName())
                     .replaceAll("%player_DisplayName%", player.getDisplayName()));
