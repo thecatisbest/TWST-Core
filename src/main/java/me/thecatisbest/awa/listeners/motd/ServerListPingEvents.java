@@ -1,4 +1,4 @@
-package me.thecatisbest.awa.events.motd;
+package me.thecatisbest.awa.listeners.motd;
 
 import me.thecatisbest.awa.Main;
 import me.thecatisbest.awa.utilis.CC;
@@ -24,7 +24,6 @@ public class ServerListPingEvents implements Listener {
 
             e.setMotd(Utilis.addPlaceholdersMessage(null, line1 + "\n" + line2));
         }
-
         if (plugin.module.getBoolean("Enable-ServerMaxPlayers")) {
             e.setMaxPlayers(plugin.config.getInt("Server-Max-Players"));
         }

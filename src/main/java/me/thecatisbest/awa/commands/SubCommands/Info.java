@@ -49,5 +49,8 @@ public class Info extends SubCommand {
                             .replaceAll(("%permission%"), plugin.permission.getString("Info-Command"))));
         }
     }
+    public List<String> getSubcommandArguments(CommandSender sender, String[] args) {
+        return null;
+    }
 }
 

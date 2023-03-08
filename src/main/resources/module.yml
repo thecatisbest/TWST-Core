@@ -3,4 +3,5 @@ version: 1
 
 Enable-Groups: true
 Enable-ServerMOTD: true
+Enable-MaintenanceMOTD: false
 Enable-ServerMaxPlayers: true

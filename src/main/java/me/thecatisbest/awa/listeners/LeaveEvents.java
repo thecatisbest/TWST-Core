@@ -1,4 +1,4 @@
-package me.thecatisbest.awa.events;
+package me.thecatisbest.awa.listeners;
 
 import dev.dejvokep.boostedyaml.block.implementation.Section;
 import me.thecatisbest.awa.Main;

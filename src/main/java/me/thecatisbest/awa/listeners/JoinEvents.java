@@ -1,10 +1,11 @@
-package me.thecatisbest.awa.events;
+package me.thecatisbest.awa.listeners;
 
 import com.cryptomorin.xseries.XSound;
 import dev.dejvokep.boostedyaml.block.implementation.Section;
 import me.thecatisbest.awa.Main;
 import me.thecatisbest.awa.utilis.CC;
 import me.thecatisbest.awa.utilis.Utilis;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -46,10 +47,11 @@ public class JoinEvents implements Listener {
                 .replace("%player%", player.getName()
                         .replace("%player_displayName%", player.getDisplayName())));
     }
-    private void setCustomJoinSounds(Player player,Section idSection) {
+    private void setCustomJoinSounds(Player player, Section idSection) {
             try {
                 if (!idSection.getString("Sound").equalsIgnoreCase("")) {
-                    XSound.play(player, idSection.getString("Sound") + ", 1, 1");
+                    Location location = player.getLocation();
+                    XSound.play(location, idSection.getString("Sound") + "");
                 }
             } catch (IllegalArgumentException e1) {
                 Utilis.logMessage(this.getClass(), "The sound " + idSection.getString("Sound") + " doesn't exist in your server version!");

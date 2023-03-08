@@ -7,11 +7,11 @@ import org.bukkit.command.CommandSender;
 
 import java.util.List;
 
-public class ViewServerMOTD extends SubCommand {
+public class ServerMOTD extends SubCommand {
 
     private final Main plugin;
 
-    public ViewServerMOTD(Main plugin) {
+    public ServerMOTD(Main plugin) {
         this.plugin = plugin;
     }
 
@@ -37,17 +37,20 @@ public class ViewServerMOTD extends SubCommand {
 
     @Override
     public void perform(CommandSender sender, String[] args) {
-        if (sender.hasPermission(plugin.permission.getString("ViewServerMOTD-Command"))) {
-            List<String> lore = plugin.message.getStringList("ViewServerMOTD-Message");
+        if (sender.hasPermission(plugin.permission.getString("ServerMOTD-Command"))) {
+            List<String> lore = plugin.message.getStringList("ServerMOTD-Message");
             for (String l : lore)
-                sender.sendMessage(CC.serverMOTDColorFormat(l)
+                sender.sendMessage(CC.color(l)
                         .replace("%max-players%", String.valueOf(plugin.config.getInt("Server-Max-Players")))
-                        .replace("%line-1%", plugin.config.getString("Server-MOTD.Line-1"))
-                        .replace("%line-2%", plugin.config.getString("Server-MOTD.Line-2")));
+                        .replace("%line-1%", plugin.config.getString(CC.color("Server-MOTD.Line-1"))
+                        .replace("%line-2%", plugin.config.getString(CC.color("Server-MOTD.Line-2")))));
         } else {
             sender.sendMessage(CC.color(
                     plugin.message.getString("No-Permission")
-                            .replaceAll(("%permission%"), plugin.permission.getString("ViewServerMOTD-Command"))));
+                            .replaceAll(("%permission%"), plugin.permission.getString("ServerMOTD-Command"))));
         }
+    }
+    public List<String> getSubcommandArguments(CommandSender sender, String[] args) {
+        return null;
     }
 }

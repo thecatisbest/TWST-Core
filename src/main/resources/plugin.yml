@@ -8,3 +8,6 @@ commands:
   twstcore:
     aliases: [twst]
     description: twst core plugin main command
+
+  helpful:
+    description: helpful command.

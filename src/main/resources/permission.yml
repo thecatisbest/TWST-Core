@@ -5,6 +5,12 @@ SubCommand-View: twstcore.subcommand.view
 Help-Command: twstcore.commands.help
 Reload-Command: twstcore.commands.reload
 Info-Command: twstcore.commands.info
-ViewServerMOTD-Command: twstcore.commands.viewservermotd
+Fly-Command: twstcore.commands.fly
+Helpful-Command: twstcore.commands.helpful
+Maintenance-Bypass: twstcore.maintenance.bypass
+ServerMOTD-Command: twstcore.commands.viewservermotd
+Maintenance-Command-View: twstcore.commands.maintenance.view
+Maintenance-Command-Edit: twstcore.commands.maintenance.edit
+
 
 Join-Firework: twstcore.join.firework

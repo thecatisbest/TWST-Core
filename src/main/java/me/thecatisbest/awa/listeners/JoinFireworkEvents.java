@@ -1,4 +1,4 @@
-package me.thecatisbest.awa.events;
+package me.thecatisbest.awa.listeners;
 
 import me.thecatisbest.awa.Main;
 import org.bukkit.Bukkit;

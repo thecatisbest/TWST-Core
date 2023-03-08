@@ -5,7 +5,14 @@ version_own: "&b&lBETA &c0.87 &f-> &b&l0.97"
 SubCommand-Info-Description: "Check the plugin info."
 SubCommand-Reload-Description: "Reloads the config file."
 SubCommand-ViewServerMOTD-Description: "View the server motd."
+SubCommand-Maintenance-Description: "Toggle Maintenance."
+SubCommand-Fly-Description: "Toggle Fly."
+SubCommand-Helpful-Description: "Send the custom help command to player."
 
+Helpful-Message:
+  - "&d&m----------&bHelp command&d&m----------"
+  - "&b/fly &7- &dToggle fly"
+  - "&b/twst &7 &dMain command"
 # Placeholder: %author%, %version%
 Info-Message:
   - "&b&l| &bMade by: &f%author%"
@@ -15,14 +22,31 @@ Info-Message:
   - "&dThank you for using my plugin, I hope you enjoy this plugin!"
 
 # Placeholder: %max-players%, %line-1%, %line-2%
-ViewServerMOTD-Message:
-  - "&6<< &b&nIngame MOTD &6>>"
+ServerMOTD-Message:
+  - "&6<< &b&nIngame Server-MOTD &6>>"
   - ""
   - "&eServer Max Players &6>> &a%max-players%"
   - ""
-  - "&eServer MOTD Line 1 &6>> %line-1%"
-  - "&eServer MOTD Line 2 &6>> %line-2%"
+  - "&eMOTD Line 1 &6>> %line-1%"
+  - "&eMOTD Line 2 &6>> %line-2%"
+
+# Placeholder: %line-1%, %line-2%
+MaintenanceMOTD-Message:
+  - "&6<< &b&nIngame Maintenance-MOTD &6>>"
+  - ""
+  - "&eMOTD Line 1 &6>> %line-1%"
+  - "&eMOTD Line 2 &6>> %line-2%"
 
 Console-Cannot-Execute: "&cConsole can't execute this command!"
 No-Permission: "&cYou do not have permission! &e%permission%"
 Success-Reload: "&aSuccessful reload configuration file!"
+Maintenance-Kick: "&cServer is now Maintenance Mode!"
+Maintenance-Enabled: "&aMaintenance is now Enabled!"
+Maintenance-Disabled: "&aMaintenance is now &cDisabled&a!"
+Fly-World-Not-WhiteList: "&cFly is not allow in this world!"
+Fly-Disable: "&aFly is now Disabled!"
+Fly-Enable: "&cFly is now Enabled!"
+# Placeholder: %target%
+Fly-Target-Unknown: "&cCan't found player %target%!"
+# Placeholder: %target%, %format%
+Fly-Target-Status: "&aFly is now %format% &afor &b%target%&a!"

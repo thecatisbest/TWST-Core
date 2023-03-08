@@ -13,13 +13,16 @@ Server-Max-Players: 20
 Server-MOTD:
   Line-1: '&6--------- &bServer Name &7| &eServer MOTD &6---------'
   Line-2: '              &eSupport &dPlaceholderAPI&e!'
+Maintenance-MOTD:
+  Line-1: '&6--------- &bServer Name &7| &cMaintenance MOTD &6---------'
+  Line-2: '              &eSupport &dPlaceholderAPI&e!'
 
 ############### JOIN-MOTD ###############
 
 Join-MOTD:
   - "&e&m-----------------------------------------------------"
   - "&bWelcome to the server &d%player%&b!"
-  - "&awww.yourserver.com"
+  - "&dwww.yourserver.com"
   - "&e&m-----------------------------------------------------"
 
 ############### JOIN_LEAVE ###############
@@ -31,14 +34,14 @@ Groups:
     Permission: twstcore.group.default  # Make sure the player has this permission.
     Join-Message: "&7[&a+&7] &bThe player &a%player% &bhas Join the game! &d[&bDefault&d]"  # Join Message
     Leave-Message: "&7[&a-&7] &bThe player &a%player% &bhas Left the game! &d[&bDefault&d]"    # Leave Message
-    Sound: ENTITY_PLAYER_LEVELUP # All the sound list at https://helpch.at/docs/
+    Sound: ENTITY_PLAYER_LEVELUP, 1, 1 # All the sound list at https://helpch.at/docs/
     Commands: # [player] run by the player, [console] run from the console.
       - "[console] Welcome %player% to the server!"
   group1:
     Permission: twstcore.group.group1
     Join-Message: "&7[&a+&7] &bThe player &a%player% &bhas Join the game! &d[&bGroup1&d]"
     Leave-Message: "&7[&a-&7] &bThe player &a%player% &bhas Left the game! &d[&bGroup1&d]"
-    Sound: ENTITY_PLAYER_LEVELUP
+    Sound: ENTITY_PLAYER_LEVELUP, 1, 1
     Commands: 
       - "[console] Welcome Group1 %player% to the server!"
 
@@ -59,3 +62,14 @@ Join-firework:
     - YELLOW
   fade:
     - WHITE
+
+############### TOGGLE FLY ###############
+Toggle-Fly:
+  Enable-World:
+    - "world"
+    - "world_nether"
+    - "world_the_end"
+
+  Format:
+    Enabled: "&aEnabled"
+    Disabled: "&cDisabled"

@@ -6,6 +6,7 @@ import me.thecatisbest.awa.utilis.CC;
 import org.bukkit.command.CommandSender;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Reload extends SubCommand {
 
@@ -52,6 +53,9 @@ public class Reload extends SubCommand {
                     plugin.message.getString("No-Permission")
                             .replaceAll(("%permission%"), plugin.permission.getString("Reload-Command"))));
         }
+    }
+    public List<String> getSubcommandArguments(CommandSender sender, String[] args) {
+        return null;
     }
 }
 
